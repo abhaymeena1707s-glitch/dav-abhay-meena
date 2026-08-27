@@ -1,5 +1,5 @@
 import { useState, useRef } from 'react';
-import { Search, Plus, Trash2, Printer, Save, Loader2 } from 'lucide-react';
+import { Search, Trash2, Printer, Save, Loader2 } from 'lucide-react';
 import api from '../services/api';
 import { formatCurrency } from '../utils/formatCurrency';
 import PrintableInvoice from '../components/billing/PrintableInvoice';

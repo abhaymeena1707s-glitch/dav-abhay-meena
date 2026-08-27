@@ -25,6 +25,7 @@ const AddItem = () => {
 
   useEffect(() => {
     if (isEditing) {
+      // eslint-disable-next-line react/set-state-in-effect
       setFormData({
         itemId: editingItem.itemId,
         name: editingItem.name,

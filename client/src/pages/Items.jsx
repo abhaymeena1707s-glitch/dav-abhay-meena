@@ -12,19 +12,18 @@ const Items = () => {
   const [itemToDelete, setItemToDelete] = useState(null);
   const navigate = useNavigate();
 
-  const fetchItems = async () => {
-    try {
-      setLoading(true);
-      const { data } = await api.get('/items');
-      setItems(data);
-    } catch (error) {
-      console.error('Failed to fetch items', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   useEffect(() => {
+    const fetchItems = async () => {
+      try {
+        // loading is initially true, no need to set it to true again
+        const { data } = await api.get('/items');
+        setItems(data);
+      } catch (error) {
+        console.error('Failed to fetch items', error);
+      } finally {
+        setLoading(false);
+      }
+    };
     fetchItems();
   }, []);
 

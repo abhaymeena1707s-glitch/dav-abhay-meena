@@ -4,17 +4,12 @@ import api from '../services/api';
 export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
-  const [admin, setAdmin] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
+  const [admin, setAdmin] = useState(() => {
     const adminInfo = localStorage.getItem('adminInfo');
-    if (adminInfo) {
-      setAdmin(JSON.parse(adminInfo));
-    }
-    setLoading(false);
-  }, []);
+    return adminInfo ? JSON.parse(adminInfo) : null;
+  });
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState(null);
 
   const login = async (username, password) => {
     try {

@@ -14,8 +14,19 @@ const ItemSearch = () => {
   
   const navigate = useNavigate();
 
-  // Basic debounce implementation
   useEffect(() => {
+    const searchItems = async () => {
+      try {
+        setLoading(true);
+        const { data } = await api.get(`/items/search?q=${searchTerm}`);
+        setItems(data);
+      } catch (error) {
+        console.error('Failed to search items', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
     const delayDebounceFn = setTimeout(() => {
       if (searchTerm) {
         searchItems();
@@ -26,18 +37,6 @@ const ItemSearch = () => {
 
     return () => clearTimeout(delayDebounceFn);
   }, [searchTerm]);
-
-  const searchItems = async () => {
-    try {
-      setLoading(true);
-      const { data } = await api.get(`/items/search?q=${searchTerm}`);
-      setItems(data);
-    } catch (error) {
-      console.error('Failed to search items', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleEdit = (item) => {
     navigate('/items/add', { state: { item } });

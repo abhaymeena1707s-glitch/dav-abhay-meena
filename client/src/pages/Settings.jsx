@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { Save, Loader2, Store, Bell, Shield } from 'lucide-react';
+import { Save, Loader2, Store, Bell } from 'lucide-react';
 
 const Settings = () => {
   const [loading, setLoading] = useState(false);
