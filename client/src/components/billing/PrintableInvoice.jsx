@@ -60,7 +60,7 @@ const PrintableInvoice = ({ bill }) => {
         <div className="w-64 space-y-3">
           <div className="flex justify-between text-sm">
             <span className="font-medium text-gray-500">Subtotal:</span>
-            <span>{formatCurrency(bill.subTotal)}</span>
+            <span>{formatCurrency(bill.subtotal)}</span>
           </div>
           <div className="flex justify-between text-sm">
             <span className="font-medium text-gray-500">Tax (18%):</span>

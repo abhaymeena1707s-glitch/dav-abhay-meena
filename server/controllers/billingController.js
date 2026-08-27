@@ -6,7 +6,7 @@ const Item = require('../models/Item');
 // @access  Private
 const createBill = async (req, res) => {
   try {
-    const { items, subtotal, discount, grandTotal } = req.body;
+    const { customerName, customerPhone, items, subtotal, tax, discount, grandTotal } = req.body;
 
     if (items && items.length === 0) {
       return res.status(400).json({ message: 'No items in bill' });
@@ -36,8 +36,11 @@ const createBill = async (req, res) => {
 
     const bill = new Bill({
       invoiceNumber,
+      customerName,
+      customerPhone,
       items,
       subtotal,
+      tax,
       discount,
       grandTotal,
     });

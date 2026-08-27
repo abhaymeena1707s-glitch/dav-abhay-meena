@@ -80,12 +80,13 @@ const Billing = () => {
         customerName,
         customerPhone,
         items: billItems.map((item) => ({
-          itemId: item._id,
+          itemId: item.itemId,
           name: item.name,
           price: item.price,
           quantity: item.quantity,
+          total: item.price * item.quantity,
         })),
-        subTotal,
+        subtotal: subTotal,
         tax: taxAmount,
         grandTotal,
       };
